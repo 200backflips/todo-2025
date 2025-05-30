@@ -17,7 +17,7 @@ const Checkbox = () => {
 const DeleteButton = ({ onDelete }: { onDelete: VoidFunction }) => {
   return (
     <button
-      className="mb-1 self-end transition-all group-hover:opacity-100 md:opacity-0"
+      className="mb-1 self-end transition-all group-hover:opacity-100 hover:text-red-500 md:opacity-0"
       onClick={onDelete}
     >
       <svg
