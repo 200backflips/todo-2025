@@ -4,9 +4,9 @@ import { useState } from "react";
 const Checkbox = () => {
   const [checked, setChecked] = useState(false);
   return (
-    <button onClick={() => setChecked(!checked)}>
+    <button onClick={() => setChecked(!checked)} className="mt-1 self-start">
       <div
-        className={clsx("mt-1 size-5 rounded-full border border-fuchsia-700", {
+        className={clsx("size-5 rounded-full border border-fuchsia-700", {
           "bg-fuchsia-700": checked,
         })}
       />
@@ -17,7 +17,7 @@ const Checkbox = () => {
 const DeleteButton = ({ onDelete }: { onDelete: VoidFunction }) => {
   return (
     <button
-      className="mt-1 transition-all md:opacity-0 md:hover:opacity-100"
+      className="mb-1 self-end transition-all group-hover:opacity-100 md:opacity-0"
       onClick={onDelete}
     >
       <svg
@@ -27,9 +27,9 @@ const DeleteButton = ({ onDelete }: { onDelete: VoidFunction }) => {
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       >
         <path d="M3 6h18" />
         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
@@ -48,7 +48,7 @@ function TodoItem({
   onDelete: VoidFunction;
 }) {
   return (
-    <div className="flex w-full items-start justify-start gap-2">
+    <div className="group flex w-full justify-start gap-2">
       <Checkbox />
       <span>{content}</span>
       <DeleteButton onDelete={onDelete} />
