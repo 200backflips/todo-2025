@@ -5,7 +5,7 @@ const Checkbox = () => {
   return (
     <button onClick={() => setChecked(!checked)}>
       <div
-        className={`mt-1 size-5 border-fuchsia-700 border rounded-full ${
+        className={`mt-1 size-5 rounded-full border border-fuchsia-700 ${
           checked ? "bg-fuchsia-700" : ""
         }`}
       />
@@ -16,7 +16,7 @@ const Checkbox = () => {
 const DeleteButton = ({ onDelete }: { onDelete: VoidFunction }) => {
   return (
     <button
-      className="md:opacity-0 md:hover:opacity-100 transition-all mt-1"
+      className="mt-1 transition-all md:opacity-0 md:hover:opacity-100"
       onClick={onDelete}
     >
       <svg
@@ -47,7 +47,7 @@ function TodoItem({
   onDelete: VoidFunction;
 }) {
   return (
-    <div className="flex items-start gap-2 justify-start w-full">
+    <div className="flex w-full items-start justify-start gap-2">
       <Checkbox />
       <span>{content}</span>
       <DeleteButton onDelete={onDelete} />

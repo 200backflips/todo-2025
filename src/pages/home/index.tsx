@@ -32,7 +32,7 @@ function Home() {
   };
 
   return (
-    <div className="flex flex-col gap-10 p-6 size-full md:w-[70vw] mx-auto outline-none ">
+    <div className="mx-auto flex size-full flex-col gap-10 p-6 md:w-[70vw]">
       <h2 className="text-2xl font-bold">TODO 2025</h2>
       <form onSubmit={handleSubmit}>
         <TodoInput />
@@ -42,7 +42,7 @@ function Home() {
           Add your first todo in the input field above ✨
         </p>
       )}
-      <div className="flex flex-col gap-3 flex-1 overflow-auto">
+      <div className="flex flex-1 flex-col gap-3 overflow-auto">
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
