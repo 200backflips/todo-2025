@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useState } from "react";
 
 const Checkbox = () => {
@@ -5,9 +6,9 @@ const Checkbox = () => {
   return (
     <button onClick={() => setChecked(!checked)}>
       <div
-        className={`mt-1 size-5 rounded-full border border-fuchsia-700 ${
-          checked ? "bg-fuchsia-700" : ""
-        }`}
+        className={clsx("mt-1 size-5 rounded-full border border-fuchsia-700", {
+          "bg-fuchsia-700": checked,
+        })}
       />
     </button>
   );
