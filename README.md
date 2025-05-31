@@ -14,7 +14,7 @@ This library is built for use with [npm](https://www.npmjs.com/).
 
 ```bash
 # Clone the repository
-git clone blah.git
+git clone https://github.com/200backflips/todo-2025.git
 
 # Navigate to the project directory
 cd todo-2025
