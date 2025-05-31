@@ -1,54 +1,59 @@
-# React + TypeScript + Vite
+# Simple to-do application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A to-do app built with React and Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add to-dos
+- Remove to-dos
+- Mark to-dos as done
 
-## Expanding the ESLint configuration
+## Install and run
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This library is built for use with [npm](https://www.npmjs.com/).
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+# Clone the repository
+git clone blah.git
+
+# Navigate to the project directory
+cd todo-2025
+
+# Install dependencies
+npm i
+
+# Run development
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## License
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+MIT
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Knowledge base
+
+[How to use LocalStorage](https://www.freecodecamp.org/news/use-local-storage-in-modern-applications/)
+
+[Version control with Git](https://git-scm.com/book/ms/v2/Getting-Started-About-Version-Control)
+
+[Lucide - Icon library](https://lucide.dev/)
+
+[clsx - Library for toggling CSS classes](https://www.npmjs.com/package/clsx)
+
+[How to customize checkbox styling](https://www.w3schools.com/howto/howto_css_custom_checkbox.asp)
+
+[Tailwind CSS docs](https://tailwindcss.com/docs/styling-with-utility-classes)
+
+[How to use form data in React](https://www.youtube.com/watch?v=_QpTQrxzY8A&t)
+
+[Introduction to JSX](https://legacy.reactjs.org/docs/introducing-jsx.html)
+
+[Using Tailwind with Vite](https://tailwindcss.com/docs/installation/using-vite)
+
+[How to start a React project in 2025](https://www.robinwieruch.de/react-starter/)
+
+[Creating a React project with Vite](https://vite.dev/guide/)
+
+[Styling inspo](https://dribbble.com/shots/21338307-042-ToDo-List)
+
+[Strict mode explained](https://react.dev/reference/react/StrictMode)
