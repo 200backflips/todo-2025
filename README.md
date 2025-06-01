@@ -1,12 +1,11 @@
-# Simple to-do application
+# Light kanban to-do application
 
-A to-do app built with React and Vite.
+A simple to-do application/kanban board
 
 ## Features
 
-- Add to-dos
-- Remove to-dos
-- Mark to-dos as done
+- Sort to-dos
+- Move to-dos between columns
 
 ## Install and run
 
@@ -32,28 +31,24 @@ MIT
 
 ## Knowledge base
 
-[How to use LocalStorage](https://www.freecodecamp.org/news/use-local-storage-in-modern-applications/)
+[How to start a React project in 2025](https://www.robinwieruch.de/react-starter/)
 
-[Version control with Git](https://git-scm.com/book/ms/v2/Getting-Started-About-Version-Control)
-
-[Lucide - Icon library](https://lucide.dev/)
-
-[clsx - Library for toggling CSS classes](https://www.npmjs.com/package/clsx)
-
-[How to customize checkbox styling](https://www.w3schools.com/howto/howto_css_custom_checkbox.asp)
-
-[Tailwind CSS docs](https://tailwindcss.com/docs/styling-with-utility-classes)
-
-[How to use form data in React](https://www.youtube.com/watch?v=_QpTQrxzY8A&t)
+[Creating a React project with Vite](https://vite.dev/guide/)
 
 [Introduction to JSX](https://legacy.reactjs.org/docs/introducing-jsx.html)
 
 [Using Tailwind with Vite](https://tailwindcss.com/docs/installation/using-vite)
 
-[How to start a React project in 2025](https://www.robinwieruch.de/react-starter/)
+[Tailwind CSS docs](https://tailwindcss.com/docs/styling-with-utility-classes)
 
-[Creating a React project with Vite](https://vite.dev/guide/)
+[@hello-pangea/dnd tutorial](https://egghead.io/lessons/react-course-introduction-beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd)
 
-[Styling inspo](https://dribbble.com/shots/21338307-042-ToDo-List)
+[clsx - Library for toggling CSS classes](https://www.npmjs.com/package/clsx)
 
 [Strict mode explained](https://react.dev/reference/react/StrictMode)
+
+[Lucide - Icon library](https://lucide.dev/)
+
+[Version control with Git](https://git-scm.com/book/ms/v2/Getting-Started-About-Version-Control)
+
+[How to use LocalStorage](https://www.freecodecamp.org/news/use-local-storage-in-modern-applications/)
