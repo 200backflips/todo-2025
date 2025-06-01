@@ -1,58 +1,109 @@
 import { useState } from "react";
-import TodoInput from "../../components/todo-input";
-import TodoItem from "../../components/todo-item";
+import ColumnComponent from "../../components/column";
+import {
+  DragDropContext,
+  type DraggableLocation,
+  type DropResult,
+} from "@hello-pangea/dnd";
+import { initialData } from "./utils";
 
-interface Todo {
-  id: string;
-  content: string;
-}
+export default function Home() {
+  const [data, setData] = useState(initialData);
 
-function Home() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const handleMoveBetweenColumns = (
+    source: DraggableLocation<string>,
+    destination: DraggableLocation<string>,
+    draggableId: string,
+  ) => {
+    const start = data.columns[source.droppableId];
+    const finish = data.columns[destination.droppableId];
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const content = formData.get("content") as string;
+    const startTaskIds = Array.from(start.taskIds);
+    startTaskIds.splice(source.index, 1);
+    const newStart = {
+      ...start,
+      taskIds: startTaskIds,
+    };
 
-    if (!content) return;
+    const finishTaskIds = Array.from(finish.taskIds);
+    finishTaskIds.splice(destination.index, 0, draggableId);
+    const newFinish = {
+      ...finish,
+      taskIds: finishTaskIds,
+    };
 
-    setTodos([
-      {
-        id: crypto.randomUUID(),
-        content,
+    setData({
+      ...data,
+      columns: {
+        ...data.columns,
+        [newStart.id]: newStart,
+        [newFinish.id]: newFinish,
       },
-      ...todos,
-    ]);
-    e.currentTarget.reset();
+    });
   };
 
-  const handleDelete = (id: string) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  const handleMoveWithinColumn = (
+    source: DraggableLocation<string>,
+    destination: DraggableLocation<string>,
+    draggableId: string,
+  ) => {
+    const sourceColumn = data.columns[source.droppableId];
+
+    const newTaskIds = Array.from(sourceColumn.taskIds);
+    newTaskIds.splice(source.index, 1);
+    newTaskIds.splice(destination.index, 0, draggableId);
+
+    const newColumn = {
+      ...sourceColumn,
+      taskIds: newTaskIds,
+    };
+
+    setData({
+      ...data,
+      columns: {
+        ...data.columns,
+        [newColumn.id]: newColumn,
+      },
+    });
+  };
+
+  const handleDragEnd = ({ source, destination, draggableId }: DropResult) => {
+    if (
+      !destination ||
+      (source.droppableId === destination.droppableId &&
+        source.index === destination.index)
+    ) {
+      return;
+    }
+
+    const start = data.columns[source.droppableId];
+    const finish = data.columns[destination.droppableId];
+
+    if (start === finish) {
+      return handleMoveWithinColumn(source, destination, draggableId);
+    }
+    return handleMoveBetweenColumns(source, destination, draggableId);
   };
 
   return (
-    <div className="mx-auto flex size-full flex-col gap-10 p-6 md:w-[70vw]">
-      <h2 className="text-2xl font-bold">TODO 2025</h2>
-      <form onSubmit={handleSubmit}>
-        <TodoInput />
-      </form>
-      {!todos.length && (
-        <p className="text-center">
-          Add your first todo in the input field above ✨
-        </p>
-      )}
-      <div className="flex flex-1 flex-col gap-3 overflow-auto">
-        {todos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            content={todo.content}
-            onDelete={() => handleDelete(todo.id)}
-          />
-        ))}
+    <DragDropContext
+      onDragStart={() => {}}
+      onDragUpdate={() => {}}
+      onDragEnd={handleDragEnd}
+    >
+      <div className="mx-auto w-full p-6 md:max-w-[70vw]">
+        <h2 className="mb-10 text-2xl font-bold">My daily duties</h2>
+        <div className="flex flex-1 flex-col justify-center gap-4 overflow-x-auto md:flex-row md:gap-10">
+          {data.columnOrder.map((columnId) => {
+            const column = data.columns[columnId];
+            const tasks = column.taskIds.map((taskId) => data.tasks[taskId]);
+
+            return (
+              <ColumnComponent key={columnId} column={column} tasks={tasks} />
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </DragDropContext>
   );
 }
-
-export default Home;
